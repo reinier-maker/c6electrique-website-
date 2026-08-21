@@ -1,0 +1,255 @@
+@import './fonts.css';
+@import 'tw-animate-css';
+@import "tailwindcss" source(none);
+@source "../**/*.{js,ts,jsx,tsx}";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+
+  /* Design tokens */
+  --apt-primary: #4157FF;
+  --apt-blue-1: #4279FF;
+  --apt-rubber: #1E1E1C;
+  --apt-black: #000000;
+  --apt-white: #FFFFFF;
+
+  --apt-grey-1: #262626;
+  --apt-grey-2: #4C4C4B;
+  --apt-grey-3: #989896;
+  --apt-grey-4: #B2B2B0;
+  --apt-grey-5: #CBCBC9;
+  --apt-grey-6: #DBDBD8;
+  --apt-grey-7: #EAEAE7;
+  --apt-grey-8: #F5F5F2;
+  --apt-grey-9: #FAFAF9;
+
+  --apt-skyline: #01CEF4;
+  --apt-green: #8CF0A9;
+
+  --background: #ffffff;
+  --foreground: #1E1E1C;
+  --card: #ffffff;
+  --card-foreground: #1E1E1C;
+  --primary: #4157FF;
+  --primary-foreground: #ffffff;
+  --secondary: #F5F5F2;
+  --secondary-foreground: #1E1E1C;
+  --muted: #F5F5F2;
+  --muted-foreground: #989896;
+  --border: #EAEAE7;
+  --input: transparent;
+  --ring: #4157FF;
+  --radius: 0.5rem;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+}
+
+@theme inline {
+  --font-sans: 'Manrope', 'Helvetica Neue', 'Verdana', sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-apt-primary: var(--apt-primary);
+  --color-apt-blue: var(--apt-blue-1);
+  --color-apt-rubber: var(--apt-rubber);
+  --color-apt-grey-8: var(--apt-grey-8);
+  --color-apt-grey-9: var(--apt-grey-9);
+  --color-apt-skyline: var(--apt-skyline);
+  --color-apt-green: var(--apt-green);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-size: var(--font-size);
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Manrope', 'Helvetica Neue', 'Verdana', sans-serif;
+    font-feature-settings: 'ss01', 'cv11';
+    color: var(--apt-grey-2);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Manrope', 'Helvetica Neue', 'Verdana', sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    color: var(--apt-rubber);
+  }
+
+  h1 {
+    font-size: clamp(2.75rem, 4.5vw, 3.75rem);
+    line-height: 1.08;
+    font-weight: 500;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    line-height: 1.12;
+    font-weight: 500;
+  }
+
+  h3 {
+    font-size: 1.375rem;
+    line-height: 1.3;
+    font-weight: 500;
+  }
+}
+
+/* ── Animated hero curve ─────────────────────────────── */
+@keyframes draw-curve {
+  from { stroke-dashoffset: 2000; }
+  to { stroke-dashoffset: 0; }
+}
+.hero-curve path {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: draw-curve 2.5s ease-out forwards;
+}
+
+/* ── Subtle grain texture overlay ────────────────────── */
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Hide scrollbar ──────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Button system ───────────────────────────────────── */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  padding: 0.875rem 1.75rem;
+  background-color: #1E1E1C;
+  color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-primary:hover {
+  background-color: #4157FF;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(65, 87, 255, 0.3);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  padding: 0.875rem 1.75rem;
+  border: 1.5px solid #EAEAE7;
+  color: #1E1E1C;
+  background-color: transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-outline:hover {
+  border-color: #1E1E1C;
+  background-color: #1E1E1C;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  color: #1E1E1C;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-ghost:hover {
+  color: #4157FF;
+}
+
+/* ── Card elevation system ───────────────────────────── */
+.card-soft {
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.03),
+    0 2px 4px rgba(0, 0, 0, 0.02),
+    0 12px 32px rgba(0, 0, 0, 0.04);
+}
+
+.card-glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.03),
+    0 4px 8px rgba(0, 0, 0, 0.03),
+    0 24px 64px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Section divider line ────────────────────────────── */
+.section-line::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 2px;
+  background: linear-gradient(90deg, #4157FF, #01CEF4);
+  border-radius: 2px;
+  margin-top: 1.5rem;
+}
+
+/* ── Luxe image treatment ────────────────────────────── */
+.img-luxe {
+  filter: contrast(1.02) brightness(1.01);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.img-luxe:hover {
+  filter: contrast(1.05) brightness(1.02);
+}
