@@ -62,7 +62,7 @@ export function NieuwsbriefArchiefDetailPage() {
           ))}
         </div>
         {editie.pdfUrl && (
-          
+          <a
             href={editie.pdfUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -75,6 +75,4 @@ export function NieuwsbriefArchiefDetailPage() {
     </div>
   );
 }
-    </div>
-  );
-}
+    
