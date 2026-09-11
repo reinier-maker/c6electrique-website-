@@ -61,7 +61,20 @@ export function NieuwsbriefArchiefDetailPage() {
             </p>
           ))}
         </div>
+        {editie.pdfUrl && (
+          
+            href={editie.pdfUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary inline-flex mt-8"
+          >
+            {t("Bekijk de volledige PDF", "View the full PDF")}
+          </a>
+        )}
       </Animate>
+    </div>
+  );
+}
     </div>
   );
 }
