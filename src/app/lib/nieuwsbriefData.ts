@@ -14,6 +14,7 @@ export type NieuwsbriefEditie = {
   excerpt: { nl: string; en: string };
   /** Eén item per alinea */
   content: { nl: string[]; en: string[] };
+  pdfUrl?: string;
 };
 
 export const nieuwsbriefEdities: NieuwsbriefEditie[] = [
@@ -40,3 +41,20 @@ export const nieuwsbriefEdities: NieuwsbriefEditie[] = [
     },
   },
 ];
+  {
+    slug: "juni-2026",
+    date: "2026-06-01",
+    title: {
+      nl: "Update juni 2026: de eerste C6électrique rijdt bijna de garage uit",
+      en: "June 2026 update: the first C6électrique is about to leave the workshop",
+    },
+    excerpt: {
+      nl: "De bouw van de eerste C6électrique is bijna klaar, en de voorbereidingen voor een kleine serieproductie zijn gestart.",
+      en: "Construction of the first C6électrique is almost finished, and preparations for a small production run have begun.",
+    },
+    content: {
+      nl: ["Deze nieuwsbrief is gepubliceerd als PDF. Klik op de knop hieronder om hem te bekijken."],
+      en: ["This newsletter was published as a PDF. Click the button below to view it."],
+    },
+    pdfUrl: "/nieuwsbrief-juni-2026.pdf",
+  },
