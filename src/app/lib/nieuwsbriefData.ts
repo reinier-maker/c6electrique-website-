@@ -40,7 +40,6 @@ export const nieuwsbriefEdities: NieuwsbriefEditie[] = [
       ],
     },
   },
-];
   {
     slug: "juni-2026",
     date: "2026-06-01",
@@ -58,3 +57,4 @@ export const nieuwsbriefEdities: NieuwsbriefEditie[] = [
     },
     pdfUrl: "/nieuwsbrief-juni-2026.pdf",
   },
+  ];
